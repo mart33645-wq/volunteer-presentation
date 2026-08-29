@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>إدارة التطوع بجامعة الابتكار</title>
+    <meta name="description" content="عرض تعريفي شامل باللجان التطوعية لإدارة التطوع بجامعة الابتكار" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+    <!-- GSAP Animation Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="deck" aria-live="polite" aria-label="عرض الشرائح"></main>
+
+    <nav class="nav-controls" aria-label="التنقل بين الشرائح">
+      <button class="nav-arrow-btn" id="btn-next" type="button" data-action="next" aria-label="الشريحة التالية" title="التالي (→)">
+        <span aria-hidden="true">›</span>
+      </button>
+      <button class="nav-arrow-btn" id="btn-prev" type="button" data-action="prev" aria-label="الشريحة السابقة" title="السابق (←)">
+        <span aria-hidden="true">‹</span>
+      </button>
+    </nav>
+
+    <div class="slide-indicator" aria-live="polite" aria-atomic="true">١ / ١٤</div>
+
+    <div class="progress-bar-wrap" role="progressbar" aria-label="تقدم العرض">
+      <div class="progress-bar-fill"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
