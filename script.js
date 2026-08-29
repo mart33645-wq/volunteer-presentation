@@ -194,7 +194,7 @@ let kenBurnsTween = null;
 const toArabicNum = (num) => String(num).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
 /* ═══════════════════════════════════════════════════════════════
-   DUAL ROTATING GRADIENT RINGS
+   DUAL ROTATING GRADIENT RINGS (GPU-ACCELERATED)
 ═══════════════════════════════════════════════════════════════ */
 function createRingSVG() {
   const ns = "http://www.w3.org/2000/svg";
@@ -205,19 +205,19 @@ function createRingSVG() {
   svg.innerHTML = `
     <defs>
       <linearGradient id="gA_${uid}" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#d4b5ff" stop-opacity="1"/>
-        <stop offset="50%" stop-color="#5f2cb8" stop-opacity="1"/>
-        <stop offset="100%" stop-color="#120344" stop-opacity="0.2"/>
+        <stop offset="0%" stop-color="#ebd5ff" stop-opacity="1"/>
+        <stop offset="50%" stop-color="#7c3aed" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#120344" stop-opacity="0.3"/>
       </linearGradient>
       <linearGradient id="gB_${uid}" x1="1" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#894ed5" stop-opacity="0.95"/>
-        <stop offset="100%" stop-color="#3b0e91" stop-opacity="0.1"/>
+        <stop offset="0%" stop-color="#a855f7" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#3b0e91" stop-opacity="0.15"/>
       </linearGradient>
     </defs>
-    <circle cx="50" cy="50" r="47.5" fill="none" stroke="url(#gA_${uid})" stroke-width="2.6" stroke-dasharray="92 200" stroke-linecap="round"/>
-    <circle cx="50" cy="50" r="47.5" fill="none" stroke="url(#gB_${uid})" stroke-width="1.6" stroke-dasharray="48 240" stroke-linecap="round" stroke-dashoffset="-115"/>
+    <circle cx="50" cy="50" r="47.5" fill="none" stroke="url(#gA_${uid})" stroke-width="2.8" stroke-dasharray="96 200" stroke-linecap="round"/>
+    <circle cx="50" cy="50" r="47.5" fill="none" stroke="url(#gB_${uid})" stroke-width="1.8" stroke-dasharray="52 240" stroke-linecap="round" stroke-dashoffset="-115"/>
+    <circle cx="50" cy="50" r="47.5" fill="none" stroke="rgba(216,180,254,0.7)" stroke-width="1.2" stroke-dasharray="18 280" stroke-linecap="round" stroke-dashoffset="-210"/>
   `;
-  gsap.to(svg, { rotation: 360, duration: 7, repeat: -1, ease: "none", transformOrigin: "50% 50%" });
   return svg;
 }
 

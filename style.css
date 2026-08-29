@@ -2,7 +2,7 @@
 
 /* ═══ ADVANCED DESIGN TOKENS ═════════════════════════════════════ */
 :root {
-  --bg:          #ede6ff;
+  --bg:          #ece5ff;
   --paper:       #ffffff;
   --ink:         #0a021d;
   --muted:       #29154d;
@@ -14,7 +14,6 @@
   --pale:        #e3d4ff;
   --line:        rgba(95,44,184,.15);
   --glass:       rgba(255,255,255,.94);
-  --shadow-l:    0 24px 70px rgba(18,3,68,.25);
   --font-ar:     'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
 }
 
@@ -39,7 +38,7 @@ html, body {
 
 button { font: inherit; }
 
-/* ═══ SLIDE CONTAINER ═══════════════════════════════════════════ */
+/* ═══ SLIDE CONTAINER (FULL SCREEN) ═════════════════════════════ */
 .deck {
   position: fixed;
   inset: 0;
@@ -61,7 +60,6 @@ button { font: inherit; }
   pointer-events: none;
   display: flex;
   flex-direction: column;
-  transform-origin: center center;
   will-change: transform, opacity;
 }
 
@@ -77,10 +75,10 @@ button { font: inherit; }
   position: absolute;
   top: -18%;
   left: -12%;
-  width: 58vw;
-  height: 58vw;
+  width: 55vw;
+  height: 55vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(137,78,213,.16) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(137,78,213,.15) 0%, transparent 68%);
   pointer-events: none;
   z-index: 0;
 }
@@ -90,15 +88,15 @@ button { font: inherit; }
   position: absolute;
   bottom: -18%;
   right: -12%;
-  width: 52vw;
-  height: 52vw;
+  width: 50vw;
+  height: 50vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(59,14,145,.12) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(59,14,145,.1) 0%, transparent 68%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Cinematic Shimmer Sweep */
+/* Cinematic Light Sweep */
 .slide-shimmer {
   position: absolute;
   inset: 0;
@@ -349,7 +347,7 @@ button { font: inherit; }
   box-shadow: 0 0 0 3px rgba(95,44,184,.2), 0 0 8px rgba(137,78,213,.4);
 }
 
-/* ═══ IMAGE COLUMN ══════════════════════════════════════════════ */
+/* ═══ IMAGE COLUMN & ANIMATED ROTATING RING ══════════════════════ */
 .media-col {
   flex: 0 0 auto;
   display: flex;
@@ -366,6 +364,16 @@ button { font: inherit; }
   align-items: center;
 }
 
+/* GPU Accelerated Smooth Continuous Spin */
+@keyframes spinRingA {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes spinRingB {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
 .spin-svg {
   position: absolute;
   inset: -14px;
@@ -374,6 +382,9 @@ button { font: inherit; }
   pointer-events: none;
   z-index: 5;
   overflow: visible;
+  animation: spinRingA 7s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
 .circle-frame {
@@ -384,9 +395,28 @@ button { font: inherit; }
   overflow: hidden;
   background: var(--pale);
   box-shadow:
-    0 0 0 4px rgba(95,44,184,.25),
+    0 0 0 4px rgba(95,44,184,.28),
     0 24px 65px rgba(18,3,68,.3),
-    0 0 55px rgba(137,78,213,.24);
+    0 0 55px rgba(137,78,213,.26);
+  animation: frameFloat 4.5s ease-in-out infinite alternate;
+  will-change: transform, box-shadow;
+}
+
+@keyframes frameFloat {
+  0% {
+    transform: translateY(0px) scale(1);
+    box-shadow:
+      0 0 0 4px rgba(95,44,184,.28),
+      0 20px 55px rgba(18,3,68,.25),
+      0 0 45px rgba(137,78,213,.2);
+  }
+  100% {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow:
+      0 0 0 5px rgba(137,78,213,.4),
+      0 28px 75px rgba(18,3,68,.35),
+      0 0 65px rgba(137,78,213,.35);
+  }
 }
 
 .circle-frame figure {
