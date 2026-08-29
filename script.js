@@ -471,40 +471,52 @@ function switchGalleryItem(slideEl, idx) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   ADVANCED CINEMATIC ENTRANCE ANIMATIONS
+   ROCK-SOLID CINEMATIC ENTRANCE (NO JITTER, ZERO FLICKER)
 ═══════════════════════════════════════════════════════════════ */
+let isEntrancePlaying = false;
+
 function playSlideEntrance(slideEl, idx) {
   triggerLightSweep(slideEl);
   startKenBurns(slideEl);
+  isEntrancePlaying = true;
 
   // Title Slide Animation
   if (slideEl.classList.contains("title-slide")) {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.fromTo(slideEl.querySelectorAll(".orb"), { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 2.2, stagger: 0.25 }, 0);
-    tl.fromTo(slideEl.querySelector(".hero-logo"), { scale: 0.82, opacity: 0, y: 35, filter: "blur(8px)" }, { scale: 1, opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "back.out(1.1)" }, 0.1);
-    tl.fromTo(slideEl.querySelector(".title-heading"), { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.8 }, 0.35);
-    tl.fromTo(slideEl.querySelector(".title-line"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, transformOrigin: "center" }, 0.5);
-    tl.fromTo(slideEl.querySelector(".title-sub"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.75 }, 0.65);
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      onComplete: () => { isEntrancePlaying = false; }
+    });
+    tl.fromTo(slideEl.querySelectorAll(".orb"), { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.8, stagger: 0.2 }, 0);
+    tl.fromTo(slideEl.querySelector(".hero-logo"), { scale: 0.88, opacity: 0, y: 25 }, { scale: 1, opacity: 1, y: 0, duration: 0.9, ease: "back.out(1.1)" }, 0.1);
+    tl.fromTo(slideEl.querySelector(".title-heading"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, 0.3);
+    tl.fromTo(slideEl.querySelector(".title-line"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6, transformOrigin: "center" }, 0.45);
+    tl.fromTo(slideEl.querySelector(".title-sub"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.65 }, 0.55);
     return;
   }
 
   // Org Chart Slide Animation
   if (slideEl.classList.contains("orgchart-slide")) {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.fromTo(slideEl.querySelectorAll(".oc-glow"), { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 2.2, stagger: 0.2 }, 0);
-    tl.fromTo(slideEl.querySelector(".oc-head"), { opacity: 0, y: -22 }, { opacity: 1, y: 0, duration: 0.7 }, 0.1);
-    tl.fromTo(slideEl.querySelectorAll(".oc-spine .oc-pill"), { opacity: 0, scale: 0.88, y: 12 }, { opacity: 1, scale: 1, y: 0, stagger: 0.16, duration: 0.6 }, 0.3);
-    tl.fromTo(slideEl.querySelectorAll(".oc-h-connector"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, transformOrigin: "center" }, 0.65);
-    tl.fromTo(slideEl.querySelectorAll(".oc-branch"), { opacity: 0, y: 20, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, stagger: 0.04, duration: 0.5 }, 0.75);
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      onComplete: () => { isEntrancePlaying = false; }
+    });
+    tl.fromTo(slideEl.querySelectorAll(".oc-glow"), { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 1.8, stagger: 0.15 }, 0);
+    tl.fromTo(slideEl.querySelector(".oc-head"), { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.6 }, 0.1);
+    tl.fromTo(slideEl.querySelectorAll(".oc-spine .oc-pill"), { opacity: 0, scale: 0.92, y: 10 }, { opacity: 1, scale: 1, y: 0, stagger: 0.14, duration: 0.5 }, 0.25);
+    tl.fromTo(slideEl.querySelectorAll(".oc-h-connector"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6, transformOrigin: "center" }, 0.5);
+    tl.fromTo(slideEl.querySelectorAll(".oc-branch"), { opacity: 0, y: 16, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, stagger: 0.03, duration: 0.45 }, 0.6);
     return;
   }
 
   // Committee / About / Gallery Slides Animation
   const isEven = (idx % 2 === 0);
-  const mediaX = isEven ? -55 : 55;
-  const copyX = isEven ? 40 : -40;
+  const mediaX = isEven ? -45 : 45;
+  const copyX = isEven ? 30 : -30;
 
-  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  const tl = gsap.timeline({
+    defaults: { ease: "power2.out" },
+    onComplete: () => { isEntrancePlaying = false; }
+  });
 
   const mediaCol = slideEl.querySelector(".media-col");
   const eyebrow = slideEl.querySelector(".badge-eyebrow");
@@ -515,37 +527,37 @@ function playSlideEntrance(slideEl, idx) {
   const sectionTag = slideEl.querySelector(".section-tag");
   const bullets = slideEl.querySelectorAll(".bullets-list li");
 
-  // Media entrance (flowing glide with soft blur focus)
+  // Media entrance
   if (mediaCol) {
-    tl.fromTo(mediaCol, { opacity: 0, x: mediaX, scale: 0.92, filter: "blur(6px)" }, { opacity: 1, x: 0, scale: 1, filter: "blur(0px)", duration: 0.9 }, 0.05);
+    tl.fromTo(mediaCol, { opacity: 0, x: mediaX, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.75 }, 0.05);
   }
 
   // Sequential typography reveals
   if (eyebrow) {
-    tl.fromTo(eyebrow, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.45 }, 0.15);
+    tl.fromTo(eyebrow, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.4 }, 0.12);
   }
   if (title) {
-    tl.fromTo(title, { opacity: 0, x: copyX, y: 10 }, { opacity: 1, x: 0, y: 0, duration: 0.65 }, 0.2);
+    tl.fromTo(title, { opacity: 0, x: copyX, y: 8 }, { opacity: 1, x: 0, y: 0, duration: 0.55 }, 0.18);
   }
   if (bar) {
-    tl.fromTo(bar, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.55, transformOrigin: "right center" }, 0.35);
+    tl.fromTo(bar, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, transformOrigin: "right center" }, 0.3);
   }
   if (subhead) {
-    tl.fromTo(subhead, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5 }, 0.4);
+    tl.fromTo(subhead, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4 }, 0.35);
   }
   if (desc) {
-    tl.fromTo(desc, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 0.45);
+    tl.fromTo(desc, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5 }, 0.4);
   }
   if (sectionTag) {
-    tl.fromTo(sectionTag, { opacity: 0, x: 12 }, { opacity: 1, x: 0, duration: 0.45 }, 0.55);
+    tl.fromTo(sectionTag, { opacity: 0, x: 10 }, { opacity: 1, x: 0, duration: 0.4 }, 0.48);
   }
   if (bullets.length) {
-    tl.fromTo(bullets, { opacity: 0, x: 22 }, { opacity: 1, x: 0, stagger: 0.08, duration: 0.5 }, 0.65);
+    tl.fromTo(bullets, { opacity: 0, x: 18 }, { opacity: 1, x: 0, stagger: 0.07, duration: 0.45 }, 0.55);
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   PERSPECTIVE DEPTH SHIFT SLIDE ENGINE
+   SMOOTH SLIDE NAVIGATION (ZERO FLICKER)
 ═══════════════════════════════════════════════════════════════ */
 function goToSlide(targetIdx, dir = 1) {
   const slideEls = document.querySelectorAll(".slide");
@@ -565,8 +577,18 @@ function goToSlide(targetIdx, dir = 1) {
   indicatorEl.textContent = `${toArabicNum(activeIdx + 1)} / ${toArabicNum(total)}`;
   progressFillEl.style.width = `${((activeIdx + 1) / total) * 100}%`;
 
-  // Clean tweens
-  gsap.killTweensOf([currentSlide, nextSlide]);
+  // Kill any running tweens
+  gsap.killTweensOf(currentSlide);
+  gsap.killTweensOf(nextSlide);
+  gsap.killTweensOf(currentSlide.querySelectorAll("*"));
+  gsap.killTweensOf(nextSlide.querySelectorAll("*"));
+
+  // Reset positions cleanly
+  const cMedia = currentSlide.querySelector(".media-col");
+  const cCopy = currentSlide.querySelector(".copy-col");
+  if (cMedia) gsap.set(cMedia, { x: 0, y: 0 });
+  if (cCopy) gsap.set(cCopy, { x: 0, y: 0 });
+
   nextSlide.classList.add("active");
 
   const tl = gsap.timeline({
@@ -579,30 +601,27 @@ function goToSlide(targetIdx, dir = 1) {
     }
   });
 
-  // Outgoing: deep pushback with subtle blur
+  // Outgoing: smooth fade + slide
   tl.to(currentSlide, {
     opacity: 0,
-    x: dir * -55,
-    scale: 0.95,
-    filter: "blur(6px)",
-    duration: 0.55,
+    x: dir * -40,
+    scale: 0.98,
+    duration: 0.45,
     ease: "power2.inOut"
   }, 0);
 
-  // Incoming: smooth expansion into focus
+  // Incoming: smooth fade + slide
   tl.fromTo(nextSlide, {
     opacity: 0,
-    x: dir * 55,
-    scale: 1.04,
-    filter: "blur(6px)"
+    x: dir * 40,
+    scale: 1.02
   }, {
     opacity: 1,
     x: 0,
     scale: 1,
-    filter: "blur(0px)",
-    duration: 0.55,
+    duration: 0.45,
     ease: "power2.out"
-  }, 0.06);
+  }, 0.05);
 }
 
 function handleNext() {
@@ -629,10 +648,10 @@ function handlePrev() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   2.5D PARALLAX INTERACTION (LAYER SEPARATION)
+   2.5D PARALLAX INTERACTION (SAFE & SMOOTH)
 ═══════════════════════════════════════════════════════════════ */
 document.addEventListener("mousemove", (e) => {
-  if (isAnimating) return;
+  if (isAnimating || isEntrancePlaying) return;
   const slide = document.querySelector(".slide.active");
   if (!slide || slide.classList.contains("orgchart-slide")) return;
 
@@ -642,8 +661,8 @@ document.addEventListener("mousemove", (e) => {
   const media = slide.querySelector(".media-col");
   const copy = slide.querySelector(".copy-col");
 
-  if (media) gsap.to(media, { x: cx * -22, y: cy * -16, duration: 1.6, ease: "power1.out" });
-  if (copy) gsap.to(copy, { x: cx * 14, y: cy * 10, duration: 1.6, ease: "power1.out" });
+  if (media) gsap.to(media, { x: cx * -16, y: cy * -10, duration: 1.8, ease: "power1.out", overwrite: "auto" });
+  if (copy) gsap.to(copy, { x: cx * 10, y: cy * 6, duration: 1.8, ease: "power1.out", overwrite: "auto" });
 });
 
 /* ═══════════════════════════════════════════════════════════════
