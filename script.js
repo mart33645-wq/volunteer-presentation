@@ -189,7 +189,6 @@ const progressFillEl = document.querySelector(".progress-bar-fill");
 let activeIdx = 0;
 let isAnimating = false;
 let galleryImgIdx = 0;
-let kenBurnsTween = null;
 
 const toArabicNum = (num) => String(num).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
@@ -219,36 +218,6 @@ function createRingSVG() {
     <circle cx="50" cy="50" r="47.5" fill="none" stroke="rgba(216,180,254,0.7)" stroke-width="1.2" stroke-dasharray="18 280" stroke-linecap="round" stroke-dashoffset="-210"/>
   `;
   return svg;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   LIGHT SWEEP SHIMMER
-═══════════════════════════════════════════════════════════════ */
-function triggerLightSweep(slideEl) {
-  const sweep = document.createElement("div");
-  sweep.className = "slide-shimmer";
-  slideEl.appendChild(sweep);
-  gsap.fromTo(sweep,
-    { x: "-130%", opacity: 0 },
-    { x: "190%", opacity: 0.9, duration: 1.1, ease: "power2.inOut", onComplete: () => sweep.remove() }
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   KEN BURNS PAN / ZOOM
-═══════════════════════════════════════════════════════════════ */
-function startKenBurns(slideEl) {
-  if (kenBurnsTween) kenBurnsTween.kill();
-  const img = slideEl.querySelector(".circle-frame figure.active img");
-  if (!img) return;
-  gsap.set(img, { scale: 1, xPercent: 0, yPercent: 0 });
-  const shiftX = (Math.random() > 0.5 ? 1 : -1) * 2.8;
-  kenBurnsTween = gsap.to(img, {
-    scale: 1.08,
-    xPercent: shiftX,
-    duration: 14,
-    ease: "sine.inOut"
-  });
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -456,67 +425,40 @@ function switchGalleryItem(slideEl, idx) {
   const descEl = slideEl.querySelector(".gallery-dynamic-text");
 
   if (activeFig && subheadEl && descEl) {
-    gsap.to([subheadEl, descEl], {
-      opacity: 0,
-      y: -6,
-      duration: 0.15,
-      onComplete: () => {
-        subheadEl.textContent = activeFig.dataset.label;
-        descEl.textContent = activeFig.dataset.text;
-        gsap.fromTo([subheadEl, descEl], { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" });
-      }
-    });
+    subheadEl.textContent = activeFig.dataset.label;
+    descEl.textContent = activeFig.dataset.text;
   }
-  startKenBurns(slideEl);
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   ROCK-SOLID CINEMATIC ENTRANCE (NO JITTER, ZERO FLICKER)
+   ROCK-SOLID SLIDE ENTRANCE ANIMATION (ZERO JITTER)
 ═══════════════════════════════════════════════════════════════ */
-let isEntrancePlaying = false;
-
 function playSlideEntrance(slideEl, idx) {
-  triggerLightSweep(slideEl);
-  startKenBurns(slideEl);
-  isEntrancePlaying = true;
-
   // Title Slide Animation
   if (slideEl.classList.contains("title-slide")) {
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out" },
-      onComplete: () => { isEntrancePlaying = false; }
-    });
-    tl.fromTo(slideEl.querySelectorAll(".orb"), { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.8, stagger: 0.2 }, 0);
-    tl.fromTo(slideEl.querySelector(".hero-logo"), { scale: 0.88, opacity: 0, y: 25 }, { scale: 1, opacity: 1, y: 0, duration: 0.9, ease: "back.out(1.1)" }, 0.1);
-    tl.fromTo(slideEl.querySelector(".title-heading"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, 0.3);
-    tl.fromTo(slideEl.querySelector(".title-line"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6, transformOrigin: "center" }, 0.45);
-    tl.fromTo(slideEl.querySelector(".title-sub"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.65 }, 0.55);
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    tl.fromTo(slideEl.querySelector(".hero-logo"), { scale: 0.9, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.8 }, 0);
+    tl.fromTo(slideEl.querySelector(".title-heading"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6 }, 0.2);
+    tl.fromTo(slideEl.querySelector(".title-line"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, transformOrigin: "center" }, 0.35);
+    tl.fromTo(slideEl.querySelector(".title-sub"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.55 }, 0.45);
     return;
   }
 
   // Org Chart Slide Animation
   if (slideEl.classList.contains("orgchart-slide")) {
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out" },
-      onComplete: () => { isEntrancePlaying = false; }
-    });
-    tl.fromTo(slideEl.querySelectorAll(".oc-glow"), { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 1.8, stagger: 0.15 }, 0);
-    tl.fromTo(slideEl.querySelector(".oc-head"), { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.6 }, 0.1);
-    tl.fromTo(slideEl.querySelectorAll(".oc-spine .oc-pill"), { opacity: 0, scale: 0.92, y: 10 }, { opacity: 1, scale: 1, y: 0, stagger: 0.14, duration: 0.5 }, 0.25);
-    tl.fromTo(slideEl.querySelectorAll(".oc-h-connector"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6, transformOrigin: "center" }, 0.5);
-    tl.fromTo(slideEl.querySelectorAll(".oc-branch"), { opacity: 0, y: 16, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, stagger: 0.03, duration: 0.45 }, 0.6);
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    tl.fromTo(slideEl.querySelector(".oc-head"), { opacity: 0, y: -15 }, { opacity: 1, y: 0, duration: 0.5 }, 0);
+    tl.fromTo(slideEl.querySelectorAll(".oc-spine .oc-pill"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, stagger: 0.1, duration: 0.45 }, 0.15);
+    tl.fromTo(slideEl.querySelectorAll(".oc-branch"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, stagger: 0.025, duration: 0.4 }, 0.35);
     return;
   }
 
-  // Committee / About / Gallery Slides Animation
+  // Committee Slide Animation (Smooth Stagger)
   const isEven = (idx % 2 === 0);
-  const mediaX = isEven ? -45 : 45;
-  const copyX = isEven ? 30 : -30;
+  const mediaX = isEven ? -30 : 30;
+  const copyX = isEven ? 20 : -20;
 
-  const tl = gsap.timeline({
-    defaults: { ease: "power2.out" },
-    onComplete: () => { isEntrancePlaying = false; }
-  });
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
   const mediaCol = slideEl.querySelector(".media-col");
   const eyebrow = slideEl.querySelector(".badge-eyebrow");
@@ -527,37 +469,34 @@ function playSlideEntrance(slideEl, idx) {
   const sectionTag = slideEl.querySelector(".section-tag");
   const bullets = slideEl.querySelectorAll(".bullets-list li");
 
-  // Media entrance
   if (mediaCol) {
-    tl.fromTo(mediaCol, { opacity: 0, x: mediaX, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.75 }, 0.05);
+    tl.fromTo(mediaCol, { opacity: 0, x: mediaX }, { opacity: 1, x: 0, duration: 0.6 }, 0);
   }
-
-  // Sequential typography reveals
   if (eyebrow) {
-    tl.fromTo(eyebrow, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.4 }, 0.12);
+    tl.fromTo(eyebrow, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.35 }, 0.05);
   }
   if (title) {
-    tl.fromTo(title, { opacity: 0, x: copyX, y: 8 }, { opacity: 1, x: 0, y: 0, duration: 0.55 }, 0.18);
+    tl.fromTo(title, { opacity: 0, x: copyX }, { opacity: 1, x: 0, duration: 0.45 }, 0.1);
   }
   if (bar) {
-    tl.fromTo(bar, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, transformOrigin: "right center" }, 0.3);
+    tl.fromTo(bar, { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.4, transformOrigin: "right center" }, 0.2);
   }
   if (subhead) {
-    tl.fromTo(subhead, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4 }, 0.35);
+    tl.fromTo(subhead, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.35 }, 0.25);
   }
   if (desc) {
-    tl.fromTo(desc, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5 }, 0.4);
+    tl.fromTo(desc, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4 }, 0.28);
   }
   if (sectionTag) {
-    tl.fromTo(sectionTag, { opacity: 0, x: 10 }, { opacity: 1, x: 0, duration: 0.4 }, 0.48);
+    tl.fromTo(sectionTag, { opacity: 0, x: 8 }, { opacity: 1, x: 0, duration: 0.35 }, 0.35);
   }
   if (bullets.length) {
-    tl.fromTo(bullets, { opacity: 0, x: 18 }, { opacity: 1, x: 0, stagger: 0.07, duration: 0.45 }, 0.55);
+    tl.fromTo(bullets, { opacity: 0, x: 14 }, { opacity: 1, x: 0, stagger: 0.05, duration: 0.38 }, 0.4);
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SMOOTH SLIDE NAVIGATION (ZERO FLICKER)
+   SMOOTH SLIDE NAVIGATION (CROSSFADE TRANSITION)
 ═══════════════════════════════════════════════════════════════ */
 function goToSlide(targetIdx, dir = 1) {
   const slideEls = document.querySelectorAll(".slide");
@@ -577,17 +516,11 @@ function goToSlide(targetIdx, dir = 1) {
   indicatorEl.textContent = `${toArabicNum(activeIdx + 1)} / ${toArabicNum(total)}`;
   progressFillEl.style.width = `${((activeIdx + 1) / total) * 100}%`;
 
-  // Kill any running tweens
+  // Clean tweens
   gsap.killTweensOf(currentSlide);
   gsap.killTweensOf(nextSlide);
   gsap.killTweensOf(currentSlide.querySelectorAll("*"));
   gsap.killTweensOf(nextSlide.querySelectorAll("*"));
-
-  // Reset positions cleanly
-  const cMedia = currentSlide.querySelector(".media-col");
-  const cCopy = currentSlide.querySelector(".copy-col");
-  if (cMedia) gsap.set(cMedia, { x: 0, y: 0 });
-  if (cCopy) gsap.set(cCopy, { x: 0, y: 0 });
 
   nextSlide.classList.add("active");
 
@@ -601,27 +534,24 @@ function goToSlide(targetIdx, dir = 1) {
     }
   });
 
-  // Outgoing: smooth fade + slide
+  // Outgoing
   tl.to(currentSlide, {
     opacity: 0,
-    x: dir * -40,
-    scale: 0.98,
-    duration: 0.45,
+    x: dir * -30,
+    duration: 0.35,
     ease: "power2.inOut"
   }, 0);
 
-  // Incoming: smooth fade + slide
+  // Incoming
   tl.fromTo(nextSlide, {
     opacity: 0,
-    x: dir * 40,
-    scale: 1.02
+    x: dir * 30
   }, {
     opacity: 1,
     x: 0,
-    scale: 1,
-    duration: 0.45,
+    duration: 0.35,
     ease: "power2.out"
-  }, 0.05);
+  }, 0.04);
 }
 
 function handleNext() {
@@ -646,24 +576,6 @@ function handlePrev() {
   }
   goToSlide(activeIdx - 1, -1);
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   2.5D PARALLAX INTERACTION (SAFE & SMOOTH)
-═══════════════════════════════════════════════════════════════ */
-document.addEventListener("mousemove", (e) => {
-  if (isAnimating || isEntrancePlaying) return;
-  const slide = document.querySelector(".slide.active");
-  if (!slide || slide.classList.contains("orgchart-slide")) return;
-
-  const cx = (e.clientX / window.innerWidth) - 0.5;
-  const cy = (e.clientY / window.innerHeight) - 0.5;
-
-  const media = slide.querySelector(".media-col");
-  const copy = slide.querySelector(".copy-col");
-
-  if (media) gsap.to(media, { x: cx * -16, y: cy * -10, duration: 1.8, ease: "power1.out", overwrite: "auto" });
-  if (copy) gsap.to(copy, { x: cx * 10, y: cy * 6, duration: 1.8, ease: "power1.out", overwrite: "auto" });
-});
 
 /* ═══════════════════════════════════════════════════════════════
    EVENT LISTENERS

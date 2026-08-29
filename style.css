@@ -2,7 +2,7 @@
 
 /* ═══ ADVANCED DESIGN TOKENS ═════════════════════════════════════ */
 :root {
-  --bg:          #ece5ff;
+  --bg:          #ede6ff;
   --paper:       #ffffff;
   --ink:         #0a021d;
   --muted:       #29154d;
@@ -38,7 +38,7 @@ html, body {
 
 button { font: inherit; }
 
-/* ═══ SLIDE CONTAINER (FULL SCREEN) ═════════════════════════════ */
+/* ═══ SLIDE CONTAINER (ROCK SOLID) ═════════════════════════════ */
 .deck {
   position: fixed;
   inset: 0;
@@ -60,7 +60,6 @@ button { font: inherit; }
   pointer-events: none;
   display: flex;
   flex-direction: column;
-  will-change: transform, opacity;
 }
 
 .slide.active {
@@ -69,7 +68,7 @@ button { font: inherit; }
   z-index: 2;
 }
 
-/* Ambient glow nebulas */
+/* Ambient static glow */
 .slide::before {
   content: '';
   position: absolute;
@@ -94,16 +93,6 @@ button { font: inherit; }
   background: radial-gradient(circle, rgba(59,14,145,.1) 0%, transparent 68%);
   pointer-events: none;
   z-index: 0;
-}
-
-/* Cinematic Light Sweep */
-.slide-shimmer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 30;
-  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.55) 50%, transparent 80%);
-  transform: skewX(-22deg);
 }
 
 /* ═══ TOP HEADER (SLIDES 2..15) ════════════════════════════════ */
@@ -147,7 +136,6 @@ button { font: inherit; }
   padding: 4px 16px;
   border-radius: 999px;
   border: 1px solid rgba(137,78,213,.24);
-  box-shadow: 0 2px 8px rgba(95,44,184,.08);
 }
 
 /* ═══ TITLE SLIDE (SLIDE 1) ═════════════════════════════════════ */
@@ -190,11 +178,7 @@ button { font: inherit; }
   width: min(720px, 86vw);
   max-height: clamp(240px, 44vh, 390px);
   object-fit: contain;
-  filter: drop-shadow(0 22px 50px rgba(59,14,145,.32));
-  transition: transform .5s cubic-bezier(.2,1,.3,1);
-}
-.hero-logo:hover {
-  transform: scale(1.03);
+  filter: drop-shadow(0 20px 45px rgba(59,14,145,.3));
 }
 
 .title-heading {
@@ -203,7 +187,6 @@ button { font: inherit; }
   font-weight: 900;
   line-height: 1.25;
   letter-spacing: -.5px;
-  text-shadow: 0 2px 20px rgba(18,3,68,.1);
 }
 
 .title-line {
@@ -211,7 +194,7 @@ button { font: inherit; }
   height: 5px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--d), var(--m), var(--l));
-  box-shadow: 0 0 24px rgba(95,44,184,.5);
+  box-shadow: 0 0 20px rgba(95,44,184,.4);
 }
 
 .title-sub {
@@ -230,7 +213,7 @@ button { font: inherit; }
   align-items: center;
   justify-content: space-between;
   gap: clamp(24px, 4vw, 64px);
-  padding: clamp(12px, 2vh, 24px) clamp(24px, 4.5vw, 64px) clamp(26px, 3.5vh, 40px);
+  padding: clamp(10px, 1.8vh, 22px) clamp(24px, 4.5vw, 64px) clamp(24px, 3.2vh, 36px);
   overflow: hidden;
 }
 
@@ -260,7 +243,7 @@ button { font: inherit; }
   font-size: clamp(13px, 1.15vw, 16px);
   font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 .badge-eyebrow::before {
   content: '';
@@ -268,7 +251,6 @@ button { font: inherit; }
   height: 8px;
   border-radius: 50%;
   background: var(--m);
-  box-shadow: 0 0 10px var(--m);
 }
 
 .heading-title {
@@ -277,7 +259,6 @@ button { font: inherit; }
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 8px;
-  text-shadow: 0 2px 14px rgba(18,3,68,.08);
 }
 
 .heading-bar {
@@ -285,16 +266,15 @@ button { font: inherit; }
   height: 4.5px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--d), var(--m), var(--l));
-  margin-bottom: clamp(10px, 1.5vh, 15px);
-  box-shadow: 0 0 14px rgba(95,44,184,.35);
+  margin-bottom: clamp(8px, 1.3vh, 14px);
 }
 
 .main-desc {
   color: var(--muted);
-  font-size: clamp(15px, 1.45vw, 21px);
+  font-size: clamp(15px, 1.4vw, 20.5px);
   font-weight: 600;
-  line-height: 1.8;
-  margin-bottom: clamp(10px, 1.4vh, 14px);
+  line-height: 1.75;
+  margin-bottom: clamp(8px, 1.2vh, 13px);
 }
 
 .section-tag {
@@ -304,7 +284,7 @@ button { font: inherit; }
   color: var(--p);
   font-size: clamp(15px, 1.35vw, 20px);
   font-weight: 900;
-  margin-bottom: clamp(6px, 1vh, 10px);
+  margin-bottom: clamp(5px, .9vh, 9px);
 }
 .section-tag::before {
   content: '';
@@ -319,7 +299,7 @@ button { font: inherit; }
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, 1vh, 9px);
+  gap: clamp(5px, .9vh, 8px);
 }
 
 .bullets-list li {
@@ -328,26 +308,21 @@ button { font: inherit; }
   gap: 12px;
   align-items: start;
   color: var(--ink);
-  font-size: clamp(14px, 1.3vw, 18.5px);
+  font-size: clamp(14px, 1.25vw, 18px);
   font-weight: 600;
-  line-height: 1.6;
-  transition: transform .2s ease;
-}
-.bullets-list li:hover {
-  transform: translateX(-4px);
+  line-height: 1.55;
 }
 
 .bullets-list li::before {
   content: '';
   width: 9px;
   height: 9px;
-  margin-top: 7px;
+  margin-top: 6px;
   border-radius: 50%;
   background: var(--m);
-  box-shadow: 0 0 0 3px rgba(95,44,184,.2), 0 0 8px rgba(137,78,213,.4);
 }
 
-/* ═══ IMAGE COLUMN & ANIMATED ROTATING RING ══════════════════════ */
+/* ═══ IMAGE COLUMN & ROTATING RING ══════════════════════════════ */
 .media-col {
   flex: 0 0 auto;
   display: flex;
@@ -364,14 +339,10 @@ button { font: inherit; }
   align-items: center;
 }
 
-/* GPU Accelerated Smooth Continuous Spin */
-@keyframes spinRingA {
+/* Smooth pure CSS rotation */
+@keyframes spinRing {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-@keyframes spinRingB {
-  0% { transform: rotate(360deg); }
-  100% { transform: rotate(0deg); }
 }
 
 .spin-svg {
@@ -382,9 +353,8 @@ button { font: inherit; }
   pointer-events: none;
   z-index: 5;
   overflow: visible;
-  animation: spinRingA 7s linear infinite;
+  animation: spinRing 8s linear infinite;
   transform-origin: 50% 50%;
-  will-change: transform;
 }
 
 .circle-frame {
@@ -395,28 +365,9 @@ button { font: inherit; }
   overflow: hidden;
   background: var(--pale);
   box-shadow:
-    0 0 0 4px rgba(95,44,184,.28),
-    0 24px 65px rgba(18,3,68,.3),
-    0 0 55px rgba(137,78,213,.26);
-  animation: frameFloat 4.5s ease-in-out infinite alternate;
-  will-change: transform, box-shadow;
-}
-
-@keyframes frameFloat {
-  0% {
-    transform: translateY(0px) scale(1);
-    box-shadow:
-      0 0 0 4px rgba(95,44,184,.28),
-      0 20px 55px rgba(18,3,68,.25),
-      0 0 45px rgba(137,78,213,.2);
-  }
-  100% {
-    transform: translateY(-6px) scale(1.015);
-    box-shadow:
-      0 0 0 5px rgba(137,78,213,.4),
-      0 28px 75px rgba(18,3,68,.35),
-      0 0 65px rgba(137,78,213,.35);
-  }
+    0 0 0 4px rgba(95,44,184,.25),
+    0 20px 55px rgba(18,3,68,.28),
+    0 0 45px rgba(137,78,213,.22);
 }
 
 .circle-frame figure {
@@ -425,7 +376,7 @@ button { font: inherit; }
   border-radius: 50%;
   overflow: hidden;
   opacity: 0;
-  transition: opacity .5s cubic-bezier(.2,1,.3,1);
+  transition: opacity .4s ease;
 }
 
 .circle-frame figure.active {
@@ -438,7 +389,6 @@ button { font: inherit; }
   object-fit: cover;
   object-position: center 30%;
   display: block;
-  will-change: transform;
 }
 
 /* Gallery switcher */
@@ -459,13 +409,13 @@ button { font: inherit; }
   background: rgba(255,255,255,.55);
   border: 1.5px solid var(--p);
   cursor: pointer;
-  transition: all .3s cubic-bezier(.2,1,.3,1);
+  transition: all .25s ease;
 }
 .dot-btn.active {
   width: 26px;
   border-radius: 999px;
   background: var(--p);
-  box-shadow: 0 0 12px rgba(59,14,145,.6);
+  box-shadow: 0 0 10px rgba(59,14,145,.5);
 }
 
 .gallery-subhead {
@@ -649,12 +599,6 @@ button { font: inherit; }
   padding: 6px 3px;
   line-height: 1.3;
   backdrop-filter: blur(10px);
-  transition: all .3s ease;
-}
-.oc-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(220,180,255,.8);
-  background: rgba(95,44,184,.38);
 }
 
 .oc-sub-tags {
@@ -722,13 +666,12 @@ button { font: inherit; }
   cursor: pointer;
   pointer-events: auto;
   backdrop-filter: blur(14px);
-  transition: all .25s cubic-bezier(.2,1,.3,1);
+  transition: all .2s ease;
 }
 .nav-arrow-btn:hover {
-  transform: scale(1.12);
+  transform: scale(1.1);
   background: #fff;
   color: var(--d);
-  box-shadow: 0 16px 40px rgba(18,3,68,.32);
 }
 
 /* Progress bar & counter */
@@ -745,8 +688,7 @@ button { font: inherit; }
   width: 0;
   height: 100%;
   background: linear-gradient(90deg, var(--d), var(--m), var(--l));
-  box-shadow: 0 0 10px rgba(137,78,213,.5);
-  transition: width .45s cubic-bezier(.2,1,.3,1);
+  transition: width .4s ease;
 }
 .slide-indicator {
   position: fixed;
