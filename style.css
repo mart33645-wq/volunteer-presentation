@@ -711,12 +711,14 @@ button { font: inherit; }
     flex-direction: column !important;
     align-items: center;
     overflow-y: auto;
-    gap: 16px;
-    padding: 16px;
+    gap: 14px;
+    padding: 14px 16px 80px;
+    -webkit-overflow-scrolling: touch;
   }
   .ring-container {
-    width: clamp(160px, 40vw, 240px);
-    height: clamp(160px, 40vw, 240px);
+    width: clamp(140px, 36vw, 210px);
+    height: clamp(140px, 36vw, 210px);
+    margin-bottom: 8px;
   }
   .copy-col { width: 100%; }
   .heading-title { font-size: 22px; }
