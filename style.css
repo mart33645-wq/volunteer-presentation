@@ -636,6 +636,22 @@ button { font: inherit; }
   color: #f3e8ff;
 }
 
+.ocr-achievements-label {
+  align-self: flex-start;
+  font-size: clamp(11.5px, .95vw, 13.5px);
+  font-weight: 800;
+  color: #fef08a;
+  margin: 4px 0 3px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ocr-achievements-label::before {
+  content: '✦';
+  font-size: 11px;
+  color: #fef08a;
+}
+
 .ocr-bullets {
   list-style: none;
   padding: 0;

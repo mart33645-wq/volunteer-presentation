@@ -421,6 +421,7 @@ function buildSlideHTML(s, i) {
           <span class="ocr-box leader">ليدر</span>
           <span class="ocr-box members">أعضاء</span>
         </div>
+        <div class="ocr-achievements-label">الإنجازات:</div>
         <ul class="ocr-bullets">
           ${c.points.map(p => `<li><span>${p}</span></li>`).join("")}
         </ul>
