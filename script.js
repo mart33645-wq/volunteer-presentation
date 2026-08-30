@@ -303,8 +303,8 @@ function buildSlideHTML(s, i) {
   }
 
   if (s.type === "orgchart") {
-    const r1 = ["الاستكشاف", "القوافل العينية", "الأسقف", "المياه", "القوافل الطبية", "الأيتام والمسنين"];
-    const r2 = ["الملابس والمعارض", "الإطعام", "إعمار المساجد", "الميديا", "الاتصالات", "المشتريات", "HR"];
+    const r1 = ["لجنة الاستكشاف", "لجنة القوافل العينية", "لجنة الأسقف", "لجنة المياه", "لجنة القوافل الطبية", "لجنة الأيتام والمسنين"];
+    const r2 = ["لجنة الملابس والمعارض", "لجنة الإطعام", "لجنة إعمار المساجد", "لجنة الميديا", "لجنة الاتصالات", "لجنة المشتريات", "لجنة HR"];
     const renderRow = (arr) => arr.map(name => `
       <div class="oc-branch">
         <div class="oc-stem-top"></div>
@@ -333,6 +333,8 @@ function buildSlideHTML(s, i) {
           <div class="oc-pill vp">نائب رئيس الجامعة لخدمة المجتمع</div>
           <div class="oc-vline"></div>
           <div class="oc-pill dir">مدير إدارة التطوع</div>
+          <div class="oc-vline"></div>
+          <div class="oc-pill comm">اللجان</div>
           <div class="oc-vline"></div>
         </div>
         <div class="oc-tree-box">

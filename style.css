@@ -523,7 +523,7 @@ button { font: inherit; }
 }
 .oc-vline {
   width: 2.5px;
-  height: 12px;
+  height: 8px;
   background: linear-gradient(180deg, rgba(180,140,255,.7), rgba(120,80,220,.3));
 }
 .oc-pill {
@@ -531,17 +531,23 @@ button { font: inherit; }
   font-weight: 900;
   color: #fff;
   text-align: center;
-  padding: 7px 30px;
+  padding: 5px 24px;
   border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 4px 28px rgba(59,14,145,.55);
+  box-shadow: 0 4px 24px rgba(59,14,145,.55);
 }
 .oc-pill.vp {
-  font-size: clamp(12px, 1.2vw, 17px);
+  font-size: clamp(11.5px, 1.1vw, 16px);
   background: linear-gradient(135deg, rgba(95,44,184,.92), rgba(59,14,145,.96));
 }
 .oc-pill.dir {
-  font-size: clamp(11px, 1.05vw, 15px);
+  font-size: clamp(10.5px, 1vw, 14.5px);
   background: linear-gradient(135deg, rgba(59,14,145,.94), rgba(18,3,68,.99));
+}
+.oc-pill.comm {
+  font-size: clamp(11px, 1.05vw, 15px);
+  background: linear-gradient(135deg, rgba(137,78,213,.95), rgba(95,44,184,.98));
+  border-color: rgba(220,180,255,.6);
+  box-shadow: 0 4px 20px rgba(137,78,213,.4);
 }
 
 .oc-tree-box {
