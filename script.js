@@ -416,13 +416,11 @@ function buildSlideHTML(s, i) {
   if (s.type === "orgchart_rich") {
     const renderCards = (arr) => arr.map(c => `
       <div class="ocr-card">
-        <div class="ocr-card-header">
-          <h3 class="ocr-card-title">${c.name}</h3>
-          <div class="ocr-team-pill">
-            <span class="ocr-leader">👑 ليدر</span>
-            <span class="ocr-sep">·</span>
-            <span class="ocr-members">👥 أعضاء</span>
-          </div>
+        <h3 class="ocr-card-title">${c.name}</h3>
+        <div class="ocr-oval-pill">
+          <span class="ocr-lead">👑 ليدر</span>
+          <span class="ocr-dot">·</span>
+          <span class="ocr-memb">👥 أعضاء</span>
         </div>
         <ul class="ocr-bullets">
           ${c.points.map(p => `<li><span>${p}</span></li>`).join("")}
