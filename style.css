@@ -555,13 +555,12 @@ button { font: inherit; }
 }
 .ocr-grid {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
   max-width: 1280px;
-  margin: 6px auto 0;
+  margin: 8px auto 0;
   position: relative;
   z-index: 2;
-  flex: 1;
 }
 .ocr-grid.count-6 {
   grid-template-columns: repeat(3, 1fr);
@@ -581,14 +580,14 @@ button { font: inherit; }
 }
 
 .ocr-card {
-  background: linear-gradient(155deg, rgba(95,44,184,.36) 0%, rgba(20,4,58,.85) 100%);
-  border: 1.5px solid rgba(190,145,255,.45);
+  background: linear-gradient(155deg, rgba(95,44,184,.38) 0%, rgba(20,4,58,.88) 100%);
+  border: 1.5px solid rgba(190,145,255,.5);
   border-radius: 12px;
-  padding: 8px 12px;
-  box-shadow: 0 4px 16px rgba(18,3,68,.4);
+  padding: 10px 14px;
+  box-shadow: 0 4px 18px rgba(18,3,68,.4);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   backdrop-filter: blur(10px);
   transition: transform .2s ease, border-color .2s ease;
 }
@@ -600,40 +599,40 @@ button { font: inherit; }
 
 .ocr-card-title {
   color: #fff;
-  font-size: clamp(13px, 1.15vw, 16px);
+  font-size: clamp(14px, 1.25vw, 17px);
   font-weight: 900;
   margin: 0;
   text-align: center;
-  text-shadow: 0 0 12px rgba(137,78,213,.75);
+  text-shadow: 0 0 12px rgba(137,78,213,.8);
 }
 
 .ocr-team-boxes-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin: 5px 0 8px 0;
+  gap: 10px;
+  margin: 6px 0 10px 0;
   width: 100%;
 }
 .ocr-box {
   flex: 1;
-  max-width: 95px;
+  max-width: 110px;
   text-align: center;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 6px;
-  font-size: clamp(11.5px, 1vw, 13.5px);
+  font-size: clamp(12px, 1.05vw, 14px);
   font-weight: 800;
   line-height: 1.2;
   box-shadow: 0 2px 6px rgba(18,3,68,.3);
 }
 .ocr-box.leader {
-  background: linear-gradient(135deg, rgba(234,179,8,.25), rgba(161,98,7,.32));
-  border: 1.2px solid rgba(253,224,71,.7);
+  background: linear-gradient(135deg, rgba(234,179,8,.28), rgba(161,98,7,.38));
+  border: 1.2px solid rgba(253,224,71,.75);
   color: #fef08a;
 }
 .ocr-box.members {
-  background: linear-gradient(135deg, rgba(137,78,213,.35), rgba(95,44,184,.32));
-  border: 1.2px solid rgba(220,180,255,.6);
+  background: linear-gradient(135deg, rgba(137,78,213,.4), rgba(95,44,184,.36));
+  border: 1.2px solid rgba(220,180,255,.65);
   color: #f3e8ff;
 }
 
@@ -644,16 +643,16 @@ button { font: inherit; }
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   text-align: right;
 }
 .ocr-bullets li {
   display: grid;
-  grid-template-columns: 9px 1fr;
+  grid-template-columns: 10px 1fr;
   gap: 8px;
   align-items: start;
   color: #ffffff;
-  font-size: clamp(12.5px, 1.05vw, 15px);
+  font-size: clamp(13px, 1.15vw, 15.5px);
   font-weight: 600;
   line-height: 1.55;
 }
