@@ -600,39 +600,39 @@ button { font: inherit; }
 
 .ocr-card-title {
   color: #fff;
-  font-size: clamp(12.5px, 1.1vw, 15px);
+  font-size: clamp(13px, 1.15vw, 16px);
   font-weight: 900;
   margin: 0;
   text-align: center;
-  text-shadow: 0 0 10px rgba(137,78,213,.7);
+  text-shadow: 0 0 12px rgba(137,78,213,.75);
 }
 
-.ocr-oval-pill {
+.ocr-team-pills-row {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  background: linear-gradient(135deg, rgba(137,78,213,.35), rgba(95,44,184,.25));
-  border: 1.2px solid rgba(220,180,255,.5);
-  border-radius: 999px;
-  padding: 2px 12px;
-  margin: 4px 0 6px 0;
-  box-shadow: 0 2px 8px rgba(95,44,184,.25);
+  gap: 8px;
+  margin: 5px 0 8px 0;
 }
-.ocr-lead {
-  font-size: 11px;
+.ocr-pill-oval {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: clamp(10.5px, .95vw, 12.5px);
   font-weight: 800;
+  box-shadow: 0 2px 8px rgba(30,6,80,.35);
+}
+.ocr-pill-oval.leader {
+  background: linear-gradient(135deg, rgba(234,179,8,.22), rgba(161,98,7,.28));
+  border: 1.2px solid rgba(253,224,71,.6);
   color: #fef08a;
 }
-.ocr-dot {
-  color: rgba(216,180,254,.7);
-  font-size: 10px;
-  font-weight: 900;
-}
-.ocr-memb {
-  font-size: 11px;
-  font-weight: 800;
-  color: #e9d5ff;
+.ocr-pill-oval.members {
+  background: linear-gradient(135deg, rgba(137,78,213,.35), rgba(95,44,184,.3));
+  border: 1.2px solid rgba(220,180,255,.55);
+  color: #f3e8ff;
 }
 
 .ocr-bullets {
@@ -642,27 +642,27 @@ button { font: inherit; }
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   text-align: right;
 }
 .ocr-bullets li {
   display: grid;
   grid-template-columns: 8px 1fr;
-  gap: 6px;
+  gap: 8px;
   align-items: start;
-  color: rgba(255,255,255,.92);
-  font-size: clamp(10px, .82vw, 12px);
-  font-weight: 500;
-  line-height: 1.4;
+  color: rgba(255,255,255,.95);
+  font-size: clamp(11.5px, .95vw, 14px);
+  font-weight: 600;
+  line-height: 1.5;
 }
 .ocr-bullets li::before {
   content: '';
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #fef08a;
-  box-shadow: 0 0 6px rgba(254,240,138,.8);
-  margin-top: 5px;
+  box-shadow: 0 0 8px rgba(254,240,138,.9);
+  margin-top: 6px;
 }
 
 /* ═══ NAVIGATION CONTROLS ═══════════════════════════════════════ */
