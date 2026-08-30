@@ -22,8 +22,8 @@ const slides = [
   {
     type: "orgchart_rich",
     part: 1,
-    title: "الهيكل التنظيمي وحصاد الإنجازات (١)",
-    subtitle: "القطاع الميداني والإغاثي والرعاية الإنسانية",
+    title: "الهيكل التنظيمي لإدارة التطوع (١)",
+    subtitle: "جامعة الابتكار",
     committees: [
       {
         name: "لجنة الاستكشاف",
@@ -73,8 +73,8 @@ const slides = [
   {
     type: "orgchart_rich",
     part: 2,
-    title: "الهيكل التنظيمي وحصاد الإنجازات (٢)",
-    subtitle: "القطاع التنفيذي والخدمي والتنسيقي",
+    title: "الهيكل التنظيمي لإدارة التطوع (٢)",
+    subtitle: "جامعة الابتكار",
     committees: [
       {
         name: "لجنة فرز وتوزيع الملابس والمعارض",
@@ -417,9 +417,9 @@ function buildSlideHTML(s, i) {
     const renderCards = (arr) => arr.map(c => `
       <div class="ocr-card">
         <h3 class="ocr-card-title">${c.name}</h3>
-        <div class="ocr-team-pills-row">
-          <span class="ocr-pill-oval leader">👑 ليدر</span>
-          <span class="ocr-pill-oval members">👥 أعضاء</span>
+        <div class="ocr-team-boxes-row">
+          <span class="ocr-box leader">ليدر</span>
+          <span class="ocr-box members">أعضاء</span>
         </div>
         <ul class="ocr-bullets">
           ${c.points.map(p => `<li><span>${p}</span></li>`).join("")}
@@ -437,7 +437,7 @@ function buildSlideHTML(s, i) {
           </div>
           <div class="oc-head-titles">
             <div class="oc-ht-main">${s.title}</div>
-            <div class="oc-ht-sub">${s.subtitle} · جامعة الابتكار</div>
+            <div class="oc-ht-sub">${s.subtitle}</div>
           </div>
         </div>
         <div class="oc-spine">
