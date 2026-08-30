@@ -230,7 +230,7 @@ function renderHeader() {
         <img class="mark-logo" src="${logo}" alt="لوجو جامعة الابتكار" />
         <span>إدارة التطوع · جامعة الابتكار</span>
       </div>
-      <div class="header-tag">خدمة المجتمع وتنمية البيئة</div>
+      <div class="header-tag">جامعة الابتكار</div>
     </header>
   `;
 }
@@ -322,10 +322,12 @@ function buildSlideHTML(s, i) {
         <div class="oc-glow g1"></div>
         <div class="oc-glow g2"></div>
         <div class="oc-head">
-          <img src="${logo}" class="oc-head-logo" alt="شعار" />
+          <div class="oc-head-logo-box">
+            <img src="${logo}" class="oc-head-logo" alt="شعار جامعة الابتكار" />
+          </div>
           <div class="oc-head-titles">
             <div class="oc-ht-main">الهيكل التنظيمي لإدارة التطوع</div>
-            <div class="oc-ht-sub">قطاع خدمة المجتمع وتنمية البيئة · جامعة الابتكار</div>
+            <div class="oc-ht-sub">جامعة الابتكار</div>
           </div>
         </div>
         <div class="oc-spine">

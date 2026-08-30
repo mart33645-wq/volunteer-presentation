@@ -485,17 +485,27 @@ button { font: inherit; }
   align-items: center;
   gap: 16px;
   justify-content: center;
-  padding: 0 14px 10px;
+  padding: 0 14px 8px;
   border-bottom: 1.5px solid rgba(137,78,213,.25);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   position: relative;
   z-index: 2;
   width: 100%;
 }
+.oc-head-logo-box {
+  background: #ffffff;
+  border: 1.5px solid rgba(190, 145, 255, 0.85);
+  border-radius: 10px;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(137, 78, 213, 0.35);
+}
 .oc-head-logo {
-  height: clamp(48px, 6.5vh, 76px);
+  height: clamp(34px, 4.6vh, 48px);
+  width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 22px rgba(137,78,213,.75));
 }
 .oc-head-titles {
   display: flex;
