@@ -270,12 +270,39 @@ button { font: inherit; }
   margin-bottom: clamp(8px, 1.3vh, 14px);
 }
 
+.team-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(95,44,184,.12), rgba(59,14,145,.06));
+  border: 1.5px solid rgba(137,78,213,.35);
+  border-radius: 999px;
+  padding: 4px 16px;
+  margin-bottom: clamp(8px, 1.2vh, 12px);
+  box-shadow: 0 2px 12px rgba(95,44,184,.1);
+}
+.team-badge .tb-item {
+  font-size: clamp(12.5px, 1.1vw, 15px);
+  font-weight: 800;
+  color: var(--p);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.team-badge .tb-item.leader {
+  color: #7c3aed;
+}
+.team-badge .tb-sep {
+  color: var(--l);
+  font-weight: 900;
+}
+
 .main-desc {
   color: var(--muted);
-  font-size: clamp(15px, 1.4vw, 20.5px);
+  font-size: clamp(14px, 1.3vw, 19px);
   font-weight: 600;
-  line-height: 1.75;
-  margin-bottom: clamp(8px, 1.2vh, 13px);
+  line-height: 1.7;
+  margin-bottom: clamp(7px, 1.1vh, 12px);
 }
 
 .section-tag {
