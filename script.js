@@ -22,7 +22,7 @@ const slides = [
   {
     type: "orgchart_rich",
     part: 1,
-    title: "الهيكل التنظيمي لإدارة التطوع (١)",
+    title: "الهيكل التنظيمي لإدارة التطوع",
     subtitle: "جامعة الابتكار",
     committees: [
       {
@@ -73,7 +73,7 @@ const slides = [
   {
     type: "orgchart_rich",
     part: 2,
-    title: "الهيكل التنظيمي لإدارة التطوع (٢)",
+    title: "الهيكل التنظيمي لإدارة التطوع",
     subtitle: "جامعة الابتكار",
     committees: [
       {
