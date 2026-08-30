@@ -20,72 +20,7 @@ const slides = [
     images: [logo]
   },
   {
-    type: "orgchart",
-    part: 1,
-    title: "الهيكل التنظيمي وحصاد الإنجازات (١)",
-    subtitle: "القطاع الميداني والإغاثي والرعاية الإنسانية",
-    committees: [
-      {
-        name: "لجنة الاستكشاف",
-        desc: "استكشاف وبحث ميداني دقيق وموثق لـ ٨٥ حالة إنسانية (شملت القوافل وحالات فردية)."
-      },
-      {
-        name: "لجنة القوافل العينية",
-        desc: "مساعدة ٢٤٠ أسرة (أسوان، المنيا، ٤ قوافل أثر، ١٥ حالة بالعاشر وبلبيس، وتجهيز ٨ عرايس)."
-      },
-      {
-        name: "لجنة الأسقف",
-        desc: "بناء وتسقيف ٣٣ سقفاً وتوفير العزل والأمان السكني للأسر الأكثر احتياجاً."
-      },
-      {
-        name: "لجنة المياه",
-        desc: "تنفيذ وتركيب ٣ وصلات مياه شرب نقية وصالحة للأسر المستحقة."
-      },
-      {
-        name: "لجنة القوافل الطبية",
-        desc: "كشف ٧٠ حالة، ٥٠ كيس دم، علاج شهري لـ ١٠ أفراد (١٣٠ مستفيد)، و٨٠ شهادة إسعافات."
-      },
-      {
-        name: "لجنة زيارات الأيتام والمسنين",
-        desc: "٦ زيارات أيتام (يوم اليتيم)، زيارتين مسنات، وحفلة أطفال بقافلة أثر ٤."
-      }
-    ]
-  },
-  {
-    type: "orgchart",
-    part: 2,
-    title: "الهيكل التنظيمي وحصاد الإنجازات (٢)",
-    subtitle: "القطاع التنفيذي والخدمي وبناء الفريق",
-    committees: [
-      {
-        name: "لجنة الملابس والمعارض",
-        desc: "استلام ٥٠٠ قطعة تبرعات، توزيعات أثر ٣، ومعارض: المنيا، أثر ٤، وكساء المدارس."
-      },
-      {
-        name: "لجنة الإطعام",
-        desc: "مائدة ٣٠ يوم (١٨,٥٠٠ وجبة)، ٥٠٠ كرتونة، ٣٨٠ شنطة رمضان، و١,٠٠٠ شنطة بكامب أسوان والمنيا وقوافل أثر."
-      },
-      {
-        name: "لجنة إعمار المساجد",
-        desc: "الصيانة الشاملة للمرافق والكهرباء والسباكة والصوتيات، وفرش المساجد والمصاحف."
-      },
-      {
-        name: "لجنة الميديا",
-        desc: "تغطية احتفال روح واحدة، ٤ قوافل أثر، كامب المنيا وأسوان، الإطعام، الزيارات، والإسعافات والتبرع بالدم."
-      },
-      {
-        name: "لجنة الاتصالات",
-        desc: "التنسيق والمتابعة وتغطية كافة الفعاليات والإيفنتات، والتواصل الفعال مع كافة المتطوعين."
-      },
-      {
-        name: "لجنة المشتريات",
-        desc: "المشاركة وتأمين المتطلبات اللوجستية وتوفير المشتريات لكافة فعاليات وإيفنتات الإدارة."
-      },
-      {
-        name: "لجنة HR (الموارد البشرية)",
-        desc: "استقبال وتأهيل وتسكين المتطوعين، متابعة التفاعل الإيجابي، والفعاليات التحفيزية والتطويرية."
-      }
-    ]
+    type: "orgchart"
   },
   {
     title: "لجنة الاستكشاف",
@@ -132,7 +67,7 @@ const slides = [
     images: ["images/miyah.jpeg"]
   },
   {
-    title: "لجنة القوافل الطبية",
+    title: "لجنة القوافل والحملات الطبية",
     eyebrow: "اللجان التطوعية والرعاية الصحية",
     description: "تهدف اللجنة إلى الاطمئنان على الحالة الصحية للأهالي وتقديم الفحوصات الطبية والعلاج اللازم مجانًا، ونشر الوعي والتثقيف الصحي في المجتمعات المحلية، ورصد وتحويل الحالات الحرجة التي تحتاج إلى رعاية ومتابعة طبية متخصصة.",
     bullets: [
@@ -368,17 +303,35 @@ function buildSlideHTML(s, i) {
   }
 
   if (s.type === "orgchart") {
-    const renderCommittees = (arr) => arr.map(c => `
-      <div class="oc-rich-card">
-        <div class="oc-rich-head">
-          <span class="oc-rich-title">${c.name}</span>
-          <div class="oc-rich-badge">
-            <span class="oc-rb-item leader">👑 ليدر</span>
-            <span class="oc-rb-sep">·</span>
-            <span class="oc-rb-item members">👥 أعضاء</span>
-          </div>
+    const r1 = [
+      { name: "لجنة الاستكشاف", ach: "استكشاف ٨٥ حالة إنسانية" },
+      { name: "لجنة القوافل العينية", ach: "٢٤٠ أسرة · ٨ عرايس" },
+      { name: "لجنة الأسقف", ach: "بناء وتأمين ٣٣ سقفاً" },
+      { name: "لجنة المياه", ach: "تركيب ٣ وصلات مياه" },
+      { name: "لجنة القوافل الطبية", ach: "٧٠ كشف · ٥٠ كيس دم" },
+      { name: "لجنة الأيتام والمسنين", ach: "٦ زيارات · حفلات" }
+    ];
+    const r2 = [
+      { name: "لجنة الملابس والمعارض", ach: "٥٠٠ قطعة تبرعات · معارض" },
+      { name: "لجنة الإطعام", ach: "١٨,٥٠٠ وجبة · ٥٠٠ كرتونة" },
+      { name: "لجنة إعمار المساجد", ach: "صيانة وفرش المساجد" },
+      { name: "لجنة الميديا", ach: "تغطية القوافل والفعاليات" },
+      { name: "لجنة الاتصالات", ach: "تغطية وتنسيق الإيفنتات" },
+      { name: "لجنة المشتريات", ach: "تأمين كافة المشتريات" },
+      { name: "لجنة HR", ach: "تنظيم وتأهيل المتطوعين" }
+    ];
+    const renderRow = (arr) => arr.map(c => `
+      <div class="oc-branch">
+        <div class="oc-stem-top"></div>
+        <div class="oc-card">
+          <div class="oc-card-name">${c.name}</div>
+          <div class="oc-card-ach">${c.ach}</div>
         </div>
-        <p class="oc-rich-desc">${c.desc}</p>
+        <div class="oc-stem-bot"></div>
+        <div class="oc-sub-tags">
+          <div class="oc-sub-item"><div class="oc-arrow-down"></div><span>ليدر</span></div>
+          <div class="oc-sub-item"><div class="oc-arrow-down"></div><span>أعضاء</span></div>
+        </div>
       </div>
     `).join("");
 
@@ -391,8 +344,8 @@ function buildSlideHTML(s, i) {
             <img src="${logo}" class="oc-head-logo" alt="شعار جامعة الابتكار" />
           </div>
           <div class="oc-head-titles">
-            <div class="oc-ht-main">${s.title}</div>
-            <div class="oc-ht-sub">${s.subtitle} · جامعة الابتكار</div>
+            <div class="oc-ht-main">الهيكل التنظيمي لإدارة التطوع</div>
+            <div class="oc-ht-sub">جامعة الابتكار</div>
           </div>
         </div>
         <div class="oc-spine">
@@ -404,8 +357,11 @@ function buildSlideHTML(s, i) {
           <div class="oc-pill comm">اللجان</div>
           <div class="oc-vline"></div>
         </div>
-        <div class="oc-rich-grid count-${s.committees.length}">
-          ${renderCommittees(s.committees)}
+        <div class="oc-tree-box">
+          <div class="oc-h-connector"></div>
+          <div class="oc-row row-6">${renderRow(r1)}</div>
+          <div class="oc-h-connector mid"></div>
+          <div class="oc-row row-7">${renderRow(r2)}</div>
         </div>
       </section>
     `;
