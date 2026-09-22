@@ -617,6 +617,10 @@ function buildSlideHTML(s, i) {
             <span class="badge-eyebrow">${s.eyebrow}</span>
             <h2 class="heading-title">${s.title}</h2>
             <div class="heading-bar"></div>
+            <div class="gallery-tabs">
+              <button type="button" class="gallery-tab active" data-tab-idx="0">👶 زيارات الأيتام</button>
+              <button type="button" class="gallery-tab" data-tab-idx="1">👵 زيارات المسنين</button>
+            </div>
             <h3 class="gallery-subhead">${s.gallery[0].label}</h3>
             <p class="main-desc gallery-dynamic-text">${s.gallery[0].text}</p>
             <span class="section-tag">أبرز مجالات الرعاية والتكافل</span>
@@ -628,7 +632,7 @@ function buildSlideHTML(s, i) {
             ${renderMediaFrame(s.images, s.gallery)}
           </div>
         </div>
-        <div class="gallery-hint-text">← استخدم مفاتيح الأسهم أو اضغط على النقاط للتبديل بين الفئتين →</div>
+        <div class="gallery-hint-text">← اضغط على الأزرار أعلاه أو النقاط أو استخدم مفاتيح الأسهم للتبديل بين الفئتين →</div>
       </section>
     `;
   }
@@ -672,6 +676,7 @@ document.querySelectorAll(".ring-container").forEach(c => {
 function switchGalleryItem(slideEl, idx) {
   const figures = slideEl.querySelectorAll(".circle-frame figure");
   const dots = slideEl.querySelectorAll(".dot-btn");
+  const tabs = slideEl.querySelectorAll(".gallery-tab");
   if (!figures.length) return;
 
   galleryImgIdx = idx;
@@ -681,6 +686,9 @@ function switchGalleryItem(slideEl, idx) {
   });
   dots.forEach((dot, i) => {
     dot.classList.toggle("active", i === idx);
+  });
+  tabs.forEach((tab, i) => {
+    tab.classList.toggle("active", i === idx);
   });
 
   const activeFig = figures[idx];
@@ -863,6 +871,14 @@ document.addEventListener("click", (e) => {
   if (dot) {
     const slide = dot.closest(".slide");
     const idx = parseInt(dot.dataset.idx, 10);
+    switchGalleryItem(slide, idx);
+    return;
+  }
+
+  const tab = e.target.closest(".gallery-tab");
+  if (tab) {
+    const slide = tab.closest(".slide");
+    const idx = parseInt(tab.dataset.tabIdx, 10);
     switchGalleryItem(slide, idx);
   }
 });
