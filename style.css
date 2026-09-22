@@ -765,3 +765,122 @@ button { font: inherit; }
   .bullets-list li { font-size: 14px; }
   .oc-row { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ═══ SUMMARY ACHIEVEMENTS SLIDE ════════════════════════════════ */
+.summary-slide {
+  background: linear-gradient(145deg, #02000a 0%, #0a0328 25%, #120542 50%, #1c0860 75%, #280c72 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(10px, 1.4vh, 16px) clamp(16px, 2vw, 28px) clamp(8px, 1.2vh, 14px);
+  direction: rtl;
+  overflow: hidden;
+}
+.summary-slide::before, .summary-slide::after { display: none; }
+
+.summary-container {
+  width: 100%;
+  max-width: 1320px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 6px 40px 6px;
+  position: relative;
+  z-index: 2;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168,85,247,.4) transparent;
+}
+.summary-container::-webkit-scrollbar {
+  width: 6px;
+}
+.summary-container::-webkit-scrollbar-thumb {
+  background: rgba(168,85,247,.4);
+  border-radius: 4px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.summary-card {
+  background: linear-gradient(155deg, rgba(95,44,184,.38) 0%, rgba(20,4,58,.88) 100%);
+  border: 1.5px solid rgba(190,145,255,.5);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 18px rgba(18,3,68,.4);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  backdrop-filter: blur(10px);
+  transition: transform .2s ease, border-color .2s ease;
+}
+.summary-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(220,180,255,.8);
+  box-shadow: 0 6px 22px rgba(137,78,213,.4);
+}
+
+.summary-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(190,145,255,.25);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+.summary-card-icon {
+  font-size: 15px;
+}
+.summary-card-title {
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 800;
+  margin: 0;
+  flex: 1;
+}
+
+.summary-card-badge {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fef08a;
+  background: rgba(234,179,8,0.18);
+  border: 1px solid rgba(254,240,138,0.35);
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin: 2px 0 4px 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.summary-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+}
+.summary-bullets li {
+  display: grid;
+  grid-template-columns: 8px 1fr;
+  gap: 6px;
+  align-items: start;
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.summary-bullets li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fef08a;
+  box-shadow: 0 0 6px rgba(254,240,138,.9);
+  margin-top: 5px;
+}
+

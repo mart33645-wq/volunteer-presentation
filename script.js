@@ -146,11 +146,11 @@ const slides = [
   },
   {
     title: "لجنة القوافل العينية",
-    eyebrow: "اللجان التطوعية والإغاثية",
+    eyebrow: "اللجان التطوعية",
     description: "تعمل اللجنة على توفير وتجهيز المساعدات العينية وتوصيلها إلى الحالات الأكثر احتياجًا لتلبية احتياجاتهم المعيشية، وتنظيم جهود التبرع والتوزيع بنظام محكم يضمن وصول الدعم لمستحقيه بأفضل صورة ممكنة وبأعلى درجات الكفاءة.",
     bullets: [
-      "استقبال وتجهيز الحزم الإغاثية والمساعدات العينية وفرزها بعناية فائقة.",
-      "تنظيم قوافل إغاثية دورية تصل إلى القرى والمناطق النائية والأشد فقرًا.",
+      "استقبال وتجهيز الحزم والمساعدات العينية وفرزها بعناية فائقة.",
+      "تنظيم قوافل دورية تصل إلى القرى والمناطق النائية والأشد فقرًا.",
       "إدارة خطط توزيع عادلة ومنظمة تضمن الكفاءة والسرعة في إيصال الدعم."
     ],
     images: ["images/qawafil-ayni.jpeg"]
@@ -287,6 +287,117 @@ const slides = [
       "خلق بيئة تطوعية محفزة ومريحة وتنظيم فعاليات التكريم والتقدير للمتميزين."
     ],
     images: ["images/hr.jpeg"]
+  },
+  {
+    type: "summary_achievements",
+    title: "حصاد أعمال وإنجازات لجان إدارة التطوع",
+    subtitle: "جامعة الابتكار — مسيرة العطاء والأثر المستدام",
+    committees: [
+      {
+        name: "لجنة الاستكشاف",
+        icon: "🔍",
+        points: [
+          "استكشاف ٨٥ حالة (قوافل وحالات فردية)."
+        ]
+      },
+      {
+        name: "لجنة القوافل العينية",
+        icon: "📦",
+        points: [
+          "مساعدة ٢٤٠ أسرة (أسوان، المنيا، قوافل أثر).",
+          "تغطية ١٥ حالة فردية في العاشر وبلبيس.",
+          "مساعدة وتجهيز ٨ عرايس."
+        ]
+      },
+      {
+        name: "لجنة الأسقف",
+        icon: "🏠",
+        points: [
+          "تنفيذ ٣٣ سقفاً لحماية منازل الأسر."
+        ]
+      },
+      {
+        name: "لجنة المياه",
+        icon: "💧",
+        points: [
+          "تركيب ٣ وصلات مياه شرب نقية."
+        ]
+      },
+      {
+        name: "لجنة القوافل الطبية",
+        icon: "🩺",
+        points: [
+          "الكشف على ٧٠ حالة من أفراد الجامعة.",
+          "التبرع بـ ٥٠ كيس دم.",
+          "علاج شهري لـ ١٠ أفراد (إجمالي ١٣٠ مستفيداً).",
+          "منح ٨٠ شهادة إسعافات أولية."
+        ]
+      },
+      {
+        name: "لجنة زيارات الأيتام والمسنين",
+        icon: "🤝",
+        points: [
+          "٦ زيارات دور أيتام (يوم اليتيم).",
+          "زيارتان لدور مسنات.",
+          "حفلة أطفال ومسنات في قافلة أثر ٤."
+        ]
+      },
+      {
+        name: "لجنة فرز وتوزيع الملابس والمعارض",
+        icon: "👕",
+        points: [
+          "استلام أكثر من ٥٠٠ قطعة تبرعات.",
+          "توزيع الملابس في قافلة أثر ٣ وحالات فردية.",
+          "معارض كساء بالمنيا، قافلة ٤، والجامعة."
+        ]
+      },
+      {
+        name: "لجنة الإطعام",
+        icon: "🍲",
+        points: [
+          "مائدة إفطار رمضان (١٨,٥٠٠ وجبة طوال ٣٠ يوماً).",
+          "تعبئة ٥٠٠ كرتونة مواد غذائية أساسية.",
+          "تعبئة وتوزيع ٣٨٠ شنطة رمضانية.",
+          "توزيع ١,٠٠٠ شنطة غذائية في كامبات وقوافل أثر."
+        ]
+      },
+      {
+        name: "لجنة إعمار المساجد",
+        icon: "🕌",
+        points: [
+          "صيانة شاملة للكهرباء والسباكة والصوتيات، وفرش المساجد والمصاحف وأجهزة التهوية."
+        ]
+      },
+      {
+        name: "لجنة الميديا",
+        icon: "📷",
+        points: [
+          "تغطية احتفال روح واحدة وجميع قوافل السنة أثر (١-٤).",
+          "توثيق كافة الزيارات والإطعام والتبرع بالدم والكامبات."
+        ]
+      },
+      {
+        name: "لجنة الاتصالات",
+        icon: "📞",
+        points: [
+          "التنسيق الفعال والمتابعة لكافة فعاليات وأنشطة إدارة التطوع."
+        ]
+      },
+      {
+        name: "لجنة المشتريات",
+        icon: "🛒",
+        points: [
+          "توفير وتجهيز مستلزمات ومشتريات كافة الفعاليات والمبادرات."
+        ]
+      },
+      {
+        name: "لجنة HR (الموارد البشرية)",
+        icon: "👥",
+        points: [
+          "تنظيم شؤون المتطوعين، المقابلات، التقييم، وبناء وتطوير مهارات الفريق."
+        ]
+      }
+    ]
   }
 ];
 
@@ -457,6 +568,42 @@ function buildSlideHTML(s, i) {
     `;
   }
 
+  if (s.type === "summary_achievements") {
+    const renderSummaryCards = (arr) => arr.map(c => `
+      <div class="summary-card">
+        <div class="summary-card-header">
+          <span class="summary-card-icon">${c.icon || "✦"}</span>
+          <h3 class="summary-card-title">${c.name}</h3>
+        </div>
+        <div class="summary-card-badge">الإنجازات</div>
+        <ul class="summary-bullets">
+          ${c.points.map(p => `<li><span>${p}</span></li>`).join("")}
+        </ul>
+      </div>
+    `).join("");
+
+    return `
+      <section class="slide summary-slide" data-index="${i}">
+        <div class="oc-glow g1"></div>
+        <div class="oc-glow g2"></div>
+        <div class="oc-head">
+          <div class="oc-head-logo-box">
+            <img src="${logo}" class="oc-head-logo" alt="شعار جامعة الابتكار" />
+          </div>
+          <div class="oc-head-titles">
+            <div class="oc-ht-main">${s.title}</div>
+            <div class="oc-ht-sub">${s.subtitle}</div>
+          </div>
+        </div>
+        <div class="summary-container">
+          <div class="summary-grid">
+            ${renderSummaryCards(s.committees)}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   if (s.type === "gallery") {
     return `
       <section class="slide" data-index="${i}" data-type="gallery">
@@ -562,6 +709,14 @@ function playSlideEntrance(slideEl, idx) {
     tl.fromTo(slideEl.querySelector(".oc-head"), { opacity: 0, y: -15 }, { opacity: 1, y: 0, duration: 0.5 }, 0);
     tl.fromTo(slideEl.querySelectorAll(".oc-spine .oc-pill"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, stagger: 0.1, duration: 0.45 }, 0.15);
     tl.fromTo(slideEl.querySelectorAll(".oc-branch"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, stagger: 0.025, duration: 0.4 }, 0.35);
+    return;
+  }
+
+  // Summary Achievements Slide Animation
+  if (slideEl.classList.contains("summary-slide")) {
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    tl.fromTo(slideEl.querySelector(".oc-head"), { opacity: 0, y: -15 }, { opacity: 1, y: 0, duration: 0.5 }, 0);
+    tl.fromTo(slideEl.querySelectorAll(".summary-card"), { opacity: 0, y: 15, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, stagger: 0.03, duration: 0.4 }, 0.15);
     return;
   }
 
