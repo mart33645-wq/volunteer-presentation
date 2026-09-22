@@ -575,7 +575,11 @@ function buildSlideHTML(s, i) {
           <span class="summary-card-icon">${c.icon || "✦"}</span>
           <h3 class="summary-card-title">${c.name}</h3>
         </div>
-        <div class="summary-card-badge">الإنجازات</div>
+        <div class="ocr-team-boxes-row summary-team-row">
+          <span class="ocr-box leader">ليدر</span>
+          <span class="ocr-box members">أعضاء</span>
+        </div>
+        <div class="ocr-achievements-badge summary-badge">✨ الإنجازات :</div>
         <ul class="summary-bullets">
           ${c.points.map(p => `<li><span>${p}</span></li>`).join("")}
         </ul>
